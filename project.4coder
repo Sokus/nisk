@@ -1,0 +1,39 @@
+version(2);
+project_name = "New Project";
+patterns = {
+    "*.c",
+    "*.cpp",
+    "*.h",
+    "*.m",
+    "*.bat",
+    "*.sh",
+    "*.4coder",
+};
+
+blacklist_patterns = {
+    ".*",
+};
+
+load_paths_base = {
+    {".", .relative = true, .recursive = true, },
+};
+
+load_paths = {
+    .win = load_paths_base,
+    .linux = load_paths_base,
+};
+
+commands = {
+    .build = {.out="*compilation*", .footer_panel = false, .save_dirty_files = true,
+        .win = "echo No build.bat path specified yet.",
+        .linux = "./build.sh", },
+    
+    .run_client = {.out="*run*", .footer_panel = false, .save_dirty_files = false,
+        .win = "echo No path to executable specified yet.",
+        .linux = "./run.sh" },
+};
+
+fkey_command = {
+    .F1 = "run_client",
+    .F2 = "build",
+};
